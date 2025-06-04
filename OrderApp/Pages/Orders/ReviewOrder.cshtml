@@ -1,0 +1,36 @@
+@page
+@model OrderApp.Pages_Orders.ReviewOrderModel
+
+@{
+    ViewData["Title"] = "Review Order";
+}
+
+<h1>Review Order</h1>
+
+<div class="row m-5">
+    <div class="col-4">
+        <table class="table border">
+            <tbody>
+                @foreach(var product in Model.Order.Products!)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => product.Product.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => product.Product.Price)</td>
+                    </tr>
+                }
+                <tr>
+                    <td>Shipping (@Model.Order.ZipCode)</td>
+                    <td>@Html.DisplayFor(modelItem => Model.ShippingCost)</td>
+                </tr>
+                <tr>
+                    <td>Tax (@Model.Order.ZipCode)</td>
+                    <td>@Html.DisplayFor(modelItem => Model.TaxCost)</td>
+                </tr>
+                <tr class="border border-3">
+                    <td>Total (USD)</td>
+                    <td><strong>@Html.DisplayFor(modelItem => Model.TotalCost)</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
